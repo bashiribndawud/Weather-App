@@ -6,7 +6,7 @@ let selectedCity;
 const getCurrentWeatherData = async ({lat, lon, name: city}) => {
   const url =
     lat && lon
-      ? `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=metric`
+      ? `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=metric`
       : `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`;
   const response = await fetch(url);
   return response.json();
@@ -14,7 +14,7 @@ const getCurrentWeatherData = async ({lat, lon, name: city}) => {
 
 const getCitiesUsingGeoLocation = async (searchText) => {
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${apikey}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${apikey}`
   );
   return response.json();
 };
@@ -137,7 +137,7 @@ const loadHumidity = ({ main: { humidity } }) => {
 };
 
 // format decimal numbers (helper function)
-const createIconUrl = (icon) => `http://openweathermap.org/img/w/${icon}.png`;
+const createIconUrl = (icon) => `https://openweathermap.org/img/w/${icon}.png`;
 const formatTemp = (temp) => `${temp?.toFixed(1)}`;
 
 const loadCurrentForecast = ({
